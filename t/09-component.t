@@ -144,39 +144,6 @@ EOF
 
 #------------------------------------------------------------
 
-    $group->add_test( name => 'flush_clear_scomp',
-		      description => 'Flush then clear inside scomp',
-		      interp_params => { lexer_class => 'MasonX::Lexer::MSP' },
-		      component => <<'EOF',
-<%method s>
-Foo
-<% $m->flush_buffer; %>\
-Bar
-<% $m->clear_buffer; %>\
-Baz
-</%method>
-This is me
-----------
-This is scomp-ed output:
-<%= $m->scomp('SELF:s') %>
-----------
-This is me again
-EOF
-		      expect => <<'EOF',
-This is me
-----------
-This is scomp-ed output:
-
-Foo
-Baz
-
-----------
-This is me again
-EOF
-		    );
-
-#------------------------------------------------------------
-
     $group->add_support( path => 'flush_clear_filter_comp',
 			 component => <<'EOF',
 Foo
@@ -206,24 +173,6 @@ before
 -Baz
 
 after
-EOF
-		    );
-
-#------------------------------------------------------------
-
-    $group->add_test( name => 'attr_if_exists',
-		      description => 'Test attr_if_exists method',
-		      interp_params => { lexer_class => 'MasonX::Lexer::MSP' },
-		      component => <<'EOF',
-have it: <%= $m->base_comp->attr_if_exists('have_it') %>
-don't have it: <%= $m->base_comp->attr_if_exists('don\'t have_it') %>
-<%attr>
-have_it => 1
-</%attr>
-EOF
-		      expect => <<'EOF',
-have it: 1
-don't have it: 0
 EOF
 		    );
 

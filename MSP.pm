@@ -1,13 +1,13 @@
 package MasonX::Lexer::MSP;
 
 # Written by John Williams.  Most code is plagurized from Lexer.pm, which is:
-# Copyright (c) 1998-2003 by Jonathan Swartz. All rights reserved.
+# Copyright (c) 1998-2004 by Jonathan Swartz. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
 use strict;
 use warnings;
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 use base qw(HTML::Mason::Lexer);
 
 use HTML::Mason::Exceptions( abbr => [qw(param_error syntax_error error)] );

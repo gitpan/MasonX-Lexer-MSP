@@ -24,7 +24,7 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2002-2003 by John Williams. All rights reserved.
+Copyright (C) 2002-2004 by John Williams. All rights reserved.
 
 MasonX::Lexer::MSP is released under the same terms as
 HTML::Mason and perl itself.

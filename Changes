@@ -1,5 +1,10 @@
 Revision history for MasonX::Lexer::MSP.
 
+0.10  11 Feb 2004
+	Update tests to be compatible with Mason 1.3
+	We have a user!  Thanks, Aran Deltac!
+
+
 0.02  30 Jun 2003
 	Change name to MasonX::Lexer::MSP
 	use h2xs to make it CPAN compatible
