@@ -61,7 +61,7 @@ EOF
 
 #------------------------------------------------------------
 
-    if ( load_pkg('HTML::Entities') )
+    if ( load_pkg('HTML::Entities') && $HTML::Mason::VERSION >= 1.14)
     {
         $group->add_test( name => 'default_escape_flags',
                           description => 'test that no escaping is done by default',
@@ -93,7 +93,7 @@ EOF
 
 #------------------------------------------------------------
 
-    if ( load_pkg('HTML::Entities') )
+    if ( load_pkg('HTML::Entities') && $HTML::Mason::VERSION >= 1.14)
     {
         $group->add_test( name => 'default_escape_flags_2',
                           description => 'test that turning on default escaping works',
@@ -547,6 +547,32 @@ EOF
 calling SELF:foo - bar
 EOF
                         );
+
+#------------------------------------------------------------
+
+    if ($HTML::Mason::VERSION >= 1.14) {
+        $group->add_test( name => 'multiple_user_escapes',
+                          description => 'test that comma works with user escapes',
+                          interp_params => { lexer_class => 'MasonX::Lexer::MSP',
+                                             escape_flags => {
+						one => sub { ${$_[0]} =~ s/1/2/; },
+						two => sub { ${$_[0]} =~ s/2/3/; },
+						},
+					    },
+                          component => <<'EOF',
+<%= 1 %>
+<%= 1 |one%>
+<%= 1 |one,two%>
+<%= 1 |two,one%>
+EOF
+                          expect => <<'EOF',
+1
+2
+3
+2
+EOF
+                        );
+    }
 
 #------------------------------------------------------------
 

@@ -7,7 +7,7 @@ package MasonX::Lexer::MSP;
 
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 use base qw(HTML::Mason::Lexer);
 
 use HTML::Mason::Exceptions( abbr => [qw(param_error syntax_error error)] );
@@ -82,7 +82,7 @@ sub match_substitute
 
     if ( $self->{current}{comp_source} =~ /\G<%=/gcs )
     {
-	if ( $self->{current}{comp_source} =~ /\G(.+?)(\s*\|\s*([a-z]+)?\s*)?%>/igcs )
+	if ( $self->{current}{comp_source} =~ /\G(.+?)(\s*\|\s*([\w\s,]+)?\s*)?%>/igcs )
 	{
 	    my ($sub, $escape) = ($1, $3);
 	    $self->{current}{compiler}->substitution( substitution => $sub,
