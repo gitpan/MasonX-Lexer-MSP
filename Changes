@@ -1,0 +1,10 @@
+Revision history for MasonX::Lexer::MSP.
+
+0.02  30 Jun 2003
+	Change name to MasonX::Lexer::MSP
+	use h2xs to make it CPAN compatible
+
+
+0.01  29 Aug 2002
+	original HTML::Mason::Lexer::MSP as posted to masonhq.com
+
